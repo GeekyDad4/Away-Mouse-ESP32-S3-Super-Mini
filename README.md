@@ -1,6 +1,10 @@
-# Away Mouse
+# Away Mouse: ESP32-S3 USB + Bluetooth Mouse Jiggler
 
-Firmware that turns an **ESP32-S3 Super Mini** into a mouse jiggler that moves like a person. Plug it into a computer and it works as a USB mouse. Power it from a charger instead and it works as a Bluetooth mouse. Either way, it starts moving the cursor a few seconds after a computer connects.
+![Away Mouse: human-like mouse jiggler for the ESP32-S3 Super Mini](docs/banner.png)
+
+Firmware that turns a few-dollar **ESP32-S3 Super Mini** into a hardware **mouse jiggler** (mouse mover) that moves like a person. It keeps a computer awake and stops the screen from locking or going idle, with no software on the computer. Plug it into a USB port and it's a USB mouse. Power it from a charger instead and it's a Bluetooth mouse. Either way, it starts moving the cursor a few seconds after a computer connects.
+
+Flash the prebuilt `.bin` from your browser; no Arduino IDE needed.
 
 - Curved strokes with a slow-fast-slow speed profile, a little hand tremor, occasional overshoot-and-correct, pauses, and the odd scroll
 - Every burst returns the cursor to exactly where it started, so it never creeps toward the edge of the screen
@@ -9,6 +13,19 @@ Firmware that turns an **ESP32-S3 Super Mini** into a mouse jiggler that moves l
 - No Wi-Fi, no app, no buttons. Power it and it runs.
 
 Tested over USB and Bluetooth on Windows and Android.
+
+## How it's different
+
+Most hardware jigglers nudge the cursor a few pixels on a timer, over USB only. Away Mouse is built to look like a hand on a mouse:
+
+| | Typical hardware jiggler | Away Mouse |
+|---|---|---|
+| Connection | USB *or* Bluetooth | **Both**, chosen automatically |
+| Movement | Small, regular nudges | Curved strokes, varied speed, tremor, overshoot, scrolls |
+| Timing | Fixed interval | Randomized bursts and pauses |
+| Cursor position | Back-and-forth in place, or drifts | Mirrored return path, ~1 px drift over 500 bursts |
+| Status | None or a blinking light | LED countdown to the next move |
+| Setup | Varies | Browser flash, nothing to install, no Wi-Fi |
 
 ## Hardware
 
@@ -109,6 +126,23 @@ A debug log goes out the UART TX pin (GPIO43) at 115200 baud, never over USB.
 | `config.h` | All the tunable settings |
 | `links.cpp` / `links.h` | USB HID mouse, Bluetooth LE HID mouse, and automatic switching |
 | `motion.h` | The human-like, self-cancelling motion engine (no Arduino dependencies) |
+
+## FAQ
+
+**Does it need drivers or software on the computer?**
+No. It's a standard HID mouse over USB and a standard HID-over-GATT mouse over Bluetooth.
+
+**Does it work on macOS, Linux, iPad or ChromeOS?**
+It's been tested on Windows and Android. It only uses the standard HID mouse profile, so other systems should work, but they haven't been tested. Reports are welcome.
+
+**Will it click on anything or type?**
+No. It only moves the cursor and scrolls the wheel. It never presses a button or key.
+
+**Will it wake my computer from sleep?**
+No. When the computer suspends the USB bus, the mouse stops moving until it wakes.
+
+**Can I use a different ESP32 board?**
+Any ESP32-S3 with native USB should work. The original ESP32 and the ESP32-C3 don't have native USB, so only Bluetooth mode could work on those, and this firmware isn't built for them.
 
 ## License
 
