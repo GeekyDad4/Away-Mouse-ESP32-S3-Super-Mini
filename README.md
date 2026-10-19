@@ -29,8 +29,31 @@ Most hardware jigglers nudge the cursor a few pixels on a timer, over USB only. 
 
 ## Hardware
 
-- ESP32-S3 Super Mini (4MB flash). Any ESP32-S3 board with native USB should work; you may need to change `LED_PIN` and `LED_COLOR_ORDER` in `config.h`.
+- An ESP32-S3 Super Mini (see below)
 - A USB-C cable. For Bluetooth mode, also a USB charger or power bank.
+
+### What to look for
+
+The ESP32-S3 Super Mini is a thumbnail-sized board sold by many makers, usually for a few dollars each and often in multi-packs. Search for **"ESP32-S3 Super Mini"** (also listed as "ESP32-S3 SuperMini") on Amazon, AliExpress, or any electronics shop. Check the listing for:
+
+| Spec | What you want |
+|---|---|
+| Chip | **ESP32-S3** (often ESP32-S3FH4R2) |
+| Flash | **4MB** or more |
+| USB | USB-C wired to the chip's native USB, the normal setup on this board |
+| LED | Onboard RGB LED on GPIO48 (optional, only for the status colors) |
+
+**Look-alikes that won't work:** the ESP32-C3 Super Mini and ESP32-C6 Super Mini look almost identical but can't act as a USB mouse, and this firmware isn't built for them. The ESP32-S2 Mini has USB but no Bluetooth. Double-check that the listing says **S3**.
+
+Other ESP32-S3 boards with native USB should also work. You may need to change `LED_PIN` and `LED_COLOR_ORDER` in `config.h`, and rebuild from source.
+
+### Where to get one
+
+> **Affiliate link disclosure:** the Amazon link below is an affiliate link. If you buy through it, I earn a small commission at no extra cost to you. You don't need to use it; any board matching the specs above works.
+>
+> **Amazon:** [ESP32-S3 Super Mini](https://link.amazon/B0ijabYYQ) *(paid link)*
+>
+> *As an Amazon Associate I earn from qualifying purchases.*
 
 ## Flashing
 
