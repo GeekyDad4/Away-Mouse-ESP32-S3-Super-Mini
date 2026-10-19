@@ -57,7 +57,7 @@ Other ESP32-S3 boards with native USB should also work. You may need to change `
 
 ### Case (optional)
 
-I use the [ESP32-S3 SuperMini Case | Snap-Fit | Options](https://makerworld.com/en/models/2851590-esp32-s3-supermini-case-snap-fit-options#profileId-3180623) by **i-BoxIt** on MakerWorld. It has an RGB window with a diffuser, so the status colors show through, and the BOOT button stays reachable for reflashing. Print it in transparent or light filament if you want the LED to glow through.
+I use the [ESP32-S3 SuperMini Case | Snap-Fit | Options](https://makerworld.com/en/models/2851590-esp32-s3-supermini-case-snap-fit-options#profileId-3180623) by **[i-BoxIt](https://makerworld.com/en/@i.boxit)** on MakerWorld. Their profile has plenty of other well-made enclosures and gadgets worth a look. It has an RGB window with a diffuser, so the status colors show through, and the BOOT button stays reachable for reflashing. Print it in transparent or light filament if you want the LED to glow through.
 
 It's someone else's design. I'm not affiliated with it and get nothing from this link. Download it from the designer's page; the files aren't included in this repo, and they're under the designer's own license.
 
